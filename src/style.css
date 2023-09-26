@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 .parent form {
   display: flex;
@@ -47,6 +47,42 @@
   cursor: pointer;
 }
 .parent form button:hover {
+  color: #3535a7;
+  background-color: hsl(206deg 67.53% 81.06%);
+  border: 1px solid #5959bd;
+}
+.parent form span {
+  font-size: 30px;
+  color: #4dd34d;
+}
+
+/***********head*************/
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.father {
+  background-color: #5959bd;
+  color: white;
+  padding: 0px 22px;
+  height: 60px;
+  align-items: center;
+  font-size: 17px;
+}
+.father .button {
+  width: 85px;
+  height: 36px;
+  background-color: #5959bd;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 3px;
+  text-decoration: none;
+}
+.father .button:hover {
   color: #3535a7;
   background-color: hsl(206deg 67.53% 81.06%);
   border: 1px solid #5959bd;

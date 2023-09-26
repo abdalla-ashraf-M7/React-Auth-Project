@@ -2,11 +2,9 @@ import { useState } from "react";
 import Error from "./components/Error";
 import axios from "axios";
 
-export default function SignUp() {
-  const [name, setName] = useState("");
+export default function LogIn() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [rPass, setRpass] = useState("");
   const [isAcceptable, changAccetable] = useState(false);
   const [emailEroor, setEmailError] = useState("");
 
@@ -14,7 +12,7 @@ export default function SignUp() {
     let flag = false;
     e.preventDefault();
     changAccetable(true);
-    if (name === "" || email.length < 5 || pass.length < 5 || pass !== rPass) {
+    if (email.length < 5 || pass.length < 5) {
       flag = false;
     } else {
       flag = true;
@@ -22,11 +20,9 @@ export default function SignUp() {
     try {
       if (flag) {
         let res = await axios
-          .post("http://127.0.0.1:8000/api/register", {
-            name: name,
+          .post("http://127.0.0.1:8000/api/login", {
             email: email,
             password: pass,
-            password_confirmation: rPass,
           })
           .then((resp) => setEmailError(resp.status));
       }
@@ -47,16 +43,6 @@ export default function SignUp() {
             </div>
           </span>
         )}
-
-        <label htmlFor="1">Name:</label>
-        <input
-          id="1"
-          type="text"
-          placeholder="Name..."
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {name === "" && isAcceptable && <Error message="Name cna't be empty" />}
         <label htmlFor="2">Email:</label>
         <input
           id="2"
@@ -82,18 +68,7 @@ export default function SignUp() {
         {pass.length < 8 && isAcceptable && (
           <Error message="Password can't be less than 5" />
         )}
-        <label htmlFor="4">Repeat Password:</label>
-        <input
-          id="4"
-          type="password"
-          placeholder="Repeat Password..."
-          value={rPass}
-          onChange={(e) => setRpass(e.target.value)}
-        />
-        {pass !== rPass && isAcceptable && (
-          <Error message="the two passwords should match" />
-        )}
-        <button type="submit"> Sign Up</button>
+        <button type="submit"> Log In</button>
       </form>
     </div>
   );
