@@ -1,10 +1,8 @@
-import { useState } from "react";
-import Error from "./components/Error";
-import axios from "axios";
 import Nav from "./components/Nav";
+import Form from "./components/Form";
 
 export default function SignUp() {
-  const [name, setName] = useState("");
+  /* const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [rPass, setRpass] = useState("");
@@ -41,12 +39,17 @@ export default function SignUp() {
       setEmailError(err.response.request.status);
     }
   }
-
+ */
   return (
     <>
       <Nav />
       <div className="parent">
-        <form onSubmit={Submit}>
+        <Form
+          btnText="Sign Up"
+          submitLink="http://127.0.0.1:8000/api/register"
+          pathAfterSuccess="/"
+        />
+        {/*  <form onSubmit={Submit}>
           <label htmlFor="1">Name:</label>
           <input
             id="1"
@@ -95,7 +98,7 @@ export default function SignUp() {
             <Error message="the two passwords should match" />
           )}
           <button type="submit"> Sign Up</button>
-        </form>
+        </form> */}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Users() {
   const [users, setusers] = useState([]);
@@ -8,7 +9,6 @@ export default function Users() {
   async function deleteuser(id) {
     let res = await axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`);
     if (res.status === 200) {
-      console.log("ddddddddddddddddd");
       console.log(res);
       setUseEffect((prev) => prev + 1);
     }
@@ -25,10 +25,12 @@ export default function Users() {
       <td>{user.email}</td>
       <td>
         {
-          <i
-            style={{ color: "blue", cursor: "pointer" }}
-            className="fa-solid fa-pen-to-square"
-          ></i>
+          <Link to={`${user.id}`}>
+            <i
+              style={{ color: "blue", cursor: "pointer" }}
+              className="fa-solid fa-pen-to-square"
+            ></i>
+          </Link>
         }
         <i
           onClick={() => deleteuser(user.id)}
