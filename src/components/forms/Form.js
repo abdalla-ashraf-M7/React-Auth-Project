@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import Error from "./Error";
+import Error from "../Error";
 import axios from "axios";
+import "./form.css";
 
 export default function Form(props) {
   const [name, setName] = useState("");
